@@ -60,6 +60,8 @@ type Config struct {
 	PosterSecret         string
 	WebhookAdminToken    string
 	WebhookEncryptionKey string
+	SlackWebhookURL      string
+	DiscordWebhookURL    string
 	IngestInterval       time.Duration
 	PostInterval         time.Duration
 	// ReconcileInterval is how often contract state is read back to repair
@@ -112,6 +114,8 @@ func Load() (Config, error) {
 		PosterSecret:         os.Getenv("SUPPLY_POSTER_SECRET"),
 		WebhookAdminToken:    os.Getenv("WEBHOOK_ADMIN_TOKEN"),
 		WebhookEncryptionKey: os.Getenv("WEBHOOK_ENCRYPTION_KEY"),
+		SlackWebhookURL:      os.Getenv("SLACK_WEBHOOK_URL"),
+		DiscordWebhookURL:    os.Getenv("DISCORD_WEBHOOK_URL"),
 		LogLevel:             envOr("LOG_LEVEL", "info"),
 		KeepAwakeURL:         keepAwakeURL(os.Getenv("KEEP_AWAKE_URL"), os.Getenv("RENDER_EXTERNAL_URL")),
 	}
